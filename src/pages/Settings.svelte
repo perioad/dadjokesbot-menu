@@ -5,10 +5,14 @@
 
 	const timePattern = /^([01]\d|2[0-3]):?([0-5]\d)$/;
 
+	const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 	$: isValid = timePattern.test(time1) && timePattern.test(time2);
 </script>
 
 <h1>Settings</h1>
+
+<p>{ timeZone }</p>
 
 <input
 	type="text"
