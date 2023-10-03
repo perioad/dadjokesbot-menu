@@ -1,30 +1,25 @@
 <script>
-	let time1 = '';
-	let time2 = '';
-	let isValid = false;
+  let selectedHour = ""; // Initialize to an empty string to signify 'nothing selected'
 
-	const timePattern = /^([01]\d|2[0-3]):?([0-5]\d)$/;
+  function handleSubmit() {
+    alert(`Selected hour is ${selectedHour}`);
+  }
 
-	const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-	$: isValid = timePattern.test(time1) && timePattern.test(time2);
+  $: diff = Number(selectedHour) - (new Date().getHours() - new Date().getUTCHours());
+  $: utcTime = diff >= 0 ? diff : 24 + diff;
 </script>
 
 <h1>Settings</h1>
 
-<p>{ timeZone }</p>
+<p>{ utcTime }</p>
 
-<input
-	type="text"
-	placeholder="Time 1 (HH:MM)"
-	pattern="([01]\d|2[0-3]):?([0-5]\d)"
-	bind:value={time1}
-/>
-<input
-	type="text"
-	placeholder="Time 2 (HH:MM)"
-	pattern="([01]\d|2[0-3]):?([0-5]\d)"
-	bind:value={time2}
-/>
+<select bind:value={selectedHour}>
+	<option value="" disabled selected>Select the time</option>
+	{#each Array.from({ length: 24 }, (_, i) => i) as hour}
+	  <option value={hour}>{hour}:00</option>
+	{/each}
+  </select>
 
-<button disabled={!isValid}>Submit</button>
+<button on:click={handleSubmit} disabled={!selectedHour}>
+  Submit
+</button>
