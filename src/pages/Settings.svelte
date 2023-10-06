@@ -2,7 +2,7 @@
   let selectedHour = ""; // Initialize to an empty string to signify 'nothing selected'
 
   function handleSubmit() {
-    alert(`Selected hour is ${selectedHour}`);
+    window.Telegram.WebApp.sendData(selectedHour);
   }
 
   $: diff = Number(selectedHour) - (new Date().getHours() - new Date().getUTCHours());
