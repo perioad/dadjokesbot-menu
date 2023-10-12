@@ -1,18 +1,12 @@
-// See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
-import type { Telegram } from '@twa-dev/types';
+import { Telegram, MainButton } from '@twa-dev/types';
 
 declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface Platform {}
-	}
-
 	interface Window {
 		Telegram: Telegram;
 	}
 }
 
-export {};
+// See https://kit.svelte.dev/docs/types#app
+// for information about these interfaces
+// and what to do when importing types
+declare namespace App {}

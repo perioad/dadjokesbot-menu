@@ -1,6 +1,6 @@
 {
-	"name": "menu-web-app",
-	"version": "0.0.1",
+	"name": "dadjokes-menu",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
