@@ -4,7 +4,7 @@
 	import type { Hex } from '../../models/app.interfaces';
 	import { env } from '$env/dynamic/public';
 
-	const chooseAnotherTime = 'Choose another time';
+	const chooseAnotherTime = 'Choose another time 🚫';
 
 	let selectedHour: number;
 	let webApp: WebApp;
@@ -84,16 +84,13 @@
 			.onClick(handleSubmit);
 
 		try {
-			const responseRaw = await fetch(
-				'https://w0wm6uqzdk.execute-api.eu-central-1.amazonaws.com/',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						initData: webApp.initData,
-						action: 'scheduleHoursUTC'
-					})
-				}
-			);
+			const responseRaw = await fetch(env.PUBLIC_API, {
+				method: 'POST',
+				body: JSON.stringify({
+					initData: webApp.initData,
+					action: 'scheduleHoursUTC'
+				})
+			});
 			const response = await responseRaw.json();
 
 			if (!response.ok) {
