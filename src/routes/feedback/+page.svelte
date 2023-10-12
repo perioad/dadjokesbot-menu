@@ -2,6 +2,7 @@
 	import type { WebApp } from '@twa-dev/types';
 	import { onMount, onDestroy } from 'svelte';
 	import type { Hex } from '../../models/app.interfaces';
+	import { env } from '$env/dynamic/public';
 
 	const minChars = 20;
 	const sendMessage = `Send the feedback 📦`;
@@ -29,17 +30,14 @@
 	const sendFeedback = async () => {
 		try {
 			webApp.MainButton.showProgress().setText('Sending..');
-			const responseRaw = await fetch(
-				'https://w0wm6uqzdk.execute-api.eu-central-1.amazonaws.com/',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						initData: webApp.initData,
-						action: 'feedback',
-						feedback
-					})
-				}
-			);
+			const responseRaw = await fetch(env.PUBLIC_API, {
+				method: 'POST',
+				body: JSON.stringify({
+					initData: webApp.initData,
+					action: 'feedback',
+					feedback
+				})
+			});
 			const response = await responseRaw.json();
 
 			if (!response.ok) {

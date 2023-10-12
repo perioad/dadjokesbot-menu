@@ -2,7 +2,7 @@
 	import type { WebApp } from '@twa-dev/types';
 	import { onMount, onDestroy } from 'svelte';
 	import type { Hex } from '../../models/app.interfaces';
-	import { PUBLIC_API } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 
 	const chooseAnotherTime = 'Choose another time';
 
@@ -24,7 +24,7 @@
 			webApp.HapticFeedback.selectionChanged();
 			webApp.MainButton.showProgress().setText('Changing the time..');
 
-			const responseRaw = await fetch(PUBLIC_API, {
+			const responseRaw = await fetch(env.PUBLIC_API, {
 				method: 'POST',
 				body: JSON.stringify({
 					initData: webApp.initData,
