@@ -3,7 +3,6 @@
 	import logo from '$lib/images/dad.png';
 	import './styles.css';
 	import { onMount } from 'svelte';
-	import type { Hex } from '../models/app.interfaces';
 
 	let isTelegram = false; // change to false in prod
 

@@ -16,7 +16,15 @@
 
 		webApp = window.Telegram.WebApp;
 		webApp.setHeaderColor(color as Hex);
-		webApp.MainButton.hideProgress().onClick(openPaypal);
+		webApp.MainButton.setParams({
+			text: `Buy your dad a ☕`,
+			text_color: `#000000`,
+			is_active: true,
+			is_visible: true,
+			color
+		})
+			.hideProgress()
+			.onClick(openPaypal);
 	});
 
 	onDestroy(() => {
