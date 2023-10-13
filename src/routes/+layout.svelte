@@ -9,6 +9,7 @@
 	onMount(() => {
 		window.Telegram.WebApp.ready();
 		window.Telegram.WebApp.expand();
+		window.Telegram.WebApp.MainButton.show();
 
 		if (window.Telegram.WebApp.initData) {
 			isTelegram = true;
