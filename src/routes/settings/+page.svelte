@@ -99,7 +99,7 @@
 
 			localTime = response.scheduleHoursUTC + getDiffTimeLocalUtc();
 			selectedHour = localTime;
-			webApp.MainButton.hideProgress().disable().setText(chooseAnotherTime);
+			webApp.MainButton.disable().setText(chooseAnotherTime);
 		} catch (error) {
 			webApp.HapticFeedback.notificationOccurred('error');
 			webApp.showAlert(`Something went wrong, I'm already working on it..`);
@@ -107,6 +107,7 @@
 			isError = true;
 		} finally {
 			isLoading = false;
+			webApp.MainButton.hideProgress();
 		}
 	});
 
