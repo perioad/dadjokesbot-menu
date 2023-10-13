@@ -1,15 +1,18 @@
-<script>
+<script lang="ts">
 	import Header from '../components/Header.svelte';
 	import logo from '$lib/images/dad.png';
 	import './styles.css';
 	import { onMount } from 'svelte';
+	import type { Hex } from '../models/app.interfaces';
 
 	let isTelegram = false; // change to false in prod
 
 	onMount(() => {
+		const color = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim();
+
 		window.Telegram.WebApp.ready();
 		window.Telegram.WebApp.expand();
-		window.Telegram.WebApp.MainButton.show();
+		window.Telegram.WebApp.MainButton.showProgress().setText('').color = color as Hex;
 
 		if (window.Telegram.WebApp.initData) {
 			isTelegram = true;
