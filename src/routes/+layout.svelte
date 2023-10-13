@@ -8,11 +8,11 @@
 	let isTelegram = false; // change to false in prod
 
 	onMount(() => {
-		const color = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim();
-
 		window.Telegram.WebApp.ready();
 		window.Telegram.WebApp.expand();
-		window.Telegram.WebApp.MainButton.showProgress().setText('Loading...').color = color as Hex;
+		window.Telegram.WebApp.MainButton.showProgress().setText('Loading...');
+		window.Telegram.WebApp.MainButton.color = '#000000';
+		window.Telegram.WebApp.MainButton.textColor = '#eeeeee';
 
 		if (window.Telegram.WebApp.initData) {
 			isTelegram = true;
