@@ -177,7 +177,6 @@
 
 	.time {
 		display: block;
-		margin: 20px 0;
 	}
 
 	.select-wrapper {
