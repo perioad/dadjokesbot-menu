@@ -16,7 +16,7 @@
 
 		webApp = window.Telegram.WebApp;
 		webApp.setHeaderColor(color as Hex);
-		webApp.MainButton.onClick(openPaypal);
+		webApp.MainButton.hideProgress().onClick(openPaypal);
 	});
 
 	onDestroy(() => {

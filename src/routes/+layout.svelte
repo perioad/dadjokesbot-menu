@@ -12,7 +12,7 @@
 
 		window.Telegram.WebApp.ready();
 		window.Telegram.WebApp.expand();
-		window.Telegram.WebApp.MainButton.showProgress().setText('').color = color as Hex;
+		window.Telegram.WebApp.MainButton.showProgress().setText('Loading...').color = color as Hex;
 
 		if (window.Telegram.WebApp.initData) {
 			isTelegram = true;
