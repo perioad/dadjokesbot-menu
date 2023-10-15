@@ -74,7 +74,9 @@
 			is_active: false,
 			is_visible: true,
 			color
-		}).onClick(sendFeedback);
+		})
+			.hideProgress()
+			.onClick(sendFeedback);
 	});
 
 	onDestroy(() => {

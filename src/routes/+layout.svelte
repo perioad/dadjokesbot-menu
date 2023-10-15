@@ -9,7 +9,7 @@
 	onMount(() => {
 		window.Telegram.WebApp.ready();
 		window.Telegram.WebApp.expand();
-		window.Telegram.WebApp.MainButton.showProgress().setText('Loading...');
+		window.Telegram.WebApp.MainButton.show().showProgress().setText('Loading...');
 		window.Telegram.WebApp.MainButton.color = '#000000';
 		window.Telegram.WebApp.MainButton.textColor = '#eeeeee';
 
